@@ -1,0 +1,6 @@
+name = initializer
+description = Initializer module is a helper module to keep configuration of WebSite .
+package = Custom
+core = 7.x
+version = "7.x-0.1"
+
