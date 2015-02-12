@@ -9,6 +9,10 @@ current_DIR=${current_DIR##*/}
   #exit
 #fi
 
+# Delete settings.php
+chmod 777 sites/default/settings.php
+rm -f sites/default/settings.php
+
 # Refresh git develop branch (or some other branch)
 if [ -z "$1" ]; then
   git checkout develop
