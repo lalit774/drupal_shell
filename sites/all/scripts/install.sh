@@ -1,5 +1,5 @@
 # Obtain environment
-current_DIR=$(readlink -f ../.)
+current_DIR=$(readlink -f ./.)
 current_DIR=${current_DIR##*/}
 #environment=${current_DIR%%.*}
 
