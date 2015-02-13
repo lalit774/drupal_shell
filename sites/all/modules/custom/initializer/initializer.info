@@ -8,6 +8,7 @@ version = "7.x-0.1"
 dependencies[] = admin_menu
 dependencies[] = flexslider
 dependencies[] = features
+dependencies[] = jquery_update
 
 ;custom
 dependencies[] = page
