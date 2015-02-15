@@ -9,6 +9,9 @@ dependencies[] = admin_menu
 dependencies[] = flexslider
 dependencies[] = features
 dependencies[] = jquery_update
+dependencies[] = field_ui
+dependencies[] = views
+dependencies[] = views_ui
 
 ;custom
 dependencies[] = page
