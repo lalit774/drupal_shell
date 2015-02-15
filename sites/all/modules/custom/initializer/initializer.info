@@ -6,6 +6,8 @@ version = "7.x-0.1"
 
 ;contrib
 dependencies[] = admin_menu
+dependencies[] = token
+dependencies[] = pathauto
 dependencies[] = flexslider
 dependencies[] = features
 dependencies[] = jquery_update
