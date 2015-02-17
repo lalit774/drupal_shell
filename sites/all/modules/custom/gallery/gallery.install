@@ -1,0 +1,20 @@
+<?php
+
+ // Load gallery
+ // .content_type.inc .
+  module_load_include('inc', 'gallery', 'gallery.content_type');
+  
+  
+/**
+ *  Implementation of hook_install
+*/
+function gallery_install() {
+  _install_gallery_content_type();
+}
+
+/**
+ *  Implementation of hook_uninstall
+*/
+function gallery_uninstall() {
+  _delete_gallery_content_type('gallery');
+   cache_clear_all('variables', 'cache');

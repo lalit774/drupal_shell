@@ -1,0 +1,66 @@
+<?php
+
+/**
+ *  Implementation of hook_install
+*/
+function content_taxonomy_install() {
+  _content_types_create_taxonomy_fields();
+  _content_taxonomy_set_hs_settings();
+}
+
+function _content_types_create_taxonomy_fields(){
+  $vocabulary_content_taxonomy = array(
+    'name' => t('Content Category'),
+    'machine_name' => 'content_category',
+    'description' => t('Content Category'),
+  );
+  $vocabulary_content_taxonomy_obj = (object) $vocabulary_content_taxonomy;
+  taxonomy_vocabulary_save($vocabulary_content_taxonomy_obj);
+  custom_create_taxonomy_term('content_category');
+}
+
+/**
+ * Implements hook_uninstall.
+ */
+function content_taxonomy_uninstall() {
+ $vocabulary_content_taxonomy = taxonomy_vocabulary_machine_name_load('content_category');
+ if(isset($vocabulary_content_taxonomy->vid)){
+   taxonomy_vocabulary_delete($vocabulary_content_taxonomy->vid);
+ }
+}
+
+function custom_create_taxonomy_term($vocabulary) {
+  $taxonomy = taxonomy_vocabulary_machine_name_load($vocabulary);
+  $term_function = $vocabulary . '_terms'; 
+  $terms = $term_function();
+  foreach($terms as $parent_term => $term){
+    $pterm = taxonomy_get_term_by_name($parent_term,$taxonomy->name);
+    if(empty($pterm)){
+      $term_data = new stdClass();
+      $term_data->name = $parent_term;
+      $term_data->vid = $taxonomy->vid;
+      taxonomy_term_save($term_data);
+    }
+    if(is_array($term)){
+      foreach($term as  $sub_term){
+        $spterm = taxonomy_get_term_by_name($sub_term,$taxonomy->name);
+        if(empty($spterm)){
+          $sub_term_data = new stdClass();
+          $sub_term_data->name = $sub_term;
+          $sub_term_data->vid = $taxonomy->vid;
+          $sub_term_data->parent = array($term_data->tid);
+          taxonomy_term_save($sub_term_data);
+        }
+      }
+    }
+  }
+}
+
+function content_category_terms() {
+  return array(
+  'Gallery' => array(
+      'Gallery Page',
+      'Spoon samples',
+    ),    
+  );
+}

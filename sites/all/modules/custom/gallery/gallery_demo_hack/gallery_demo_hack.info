@@ -1,0 +1,6 @@
+name = Gallery Demo Hack
+description = This is a hepler module for demo data.
+package = Custom
+core = 7.x
+version = "7.x-1.0"
+dependencies[] = gallery

@@ -4,6 +4,9 @@ package = Custom
 core = 7.x
 version = "7.x-0.1"
 
+;core
+dependencies[] = menu
+
 ;contrib
 dependencies[] = admin_menu
 dependencies[] = token
@@ -17,3 +20,8 @@ dependencies[] = views_ui
 
 ;custom
 dependencies[] = page
+dependencies[] = gallery
+dependencies[] = field_bases
+
+;custom dummy data
+dependencies[] = gallery_demo_hack
