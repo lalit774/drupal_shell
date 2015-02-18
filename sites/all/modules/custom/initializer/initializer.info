@@ -22,6 +22,7 @@ dependencies[] = views_ui
 dependencies[] = page
 dependencies[] = gallery
 dependencies[] = field_bases
+dependencies[] = flexslider_custom_presets
 
 ;custom dummy data
 dependencies[] = gallery_demo_hack

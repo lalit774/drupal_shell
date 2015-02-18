@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function flexslider_custom_presets_ctools_plugin_api($module, $api) {
+  if ($module == 'flexslider' && $api == 'flexslider_default_preset') {
+   return array('version' => 1);
+  }
+}
