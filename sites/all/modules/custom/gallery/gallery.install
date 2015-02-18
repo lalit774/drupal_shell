@@ -18,3 +18,4 @@ function gallery_install() {
 function gallery_uninstall() {
   _delete_gallery_content_type('gallery');
    cache_clear_all('variables', 'cache');
+}
