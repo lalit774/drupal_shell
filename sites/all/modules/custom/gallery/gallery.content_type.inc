@@ -4,7 +4,7 @@ function _install_gallery_content_type() {
   field_cache_clear();
   node_types_rebuild(TRUE);
   
-  _gallery_content_type_gallery_content_type();
+  _gallery_content_type_create_gallery_content_type();
    
   $instance = _gallery_content_type_field_default_field_instances(); 
   if(!empty($instance)){
@@ -113,7 +113,7 @@ function _gallery_content_type_field_default_field_instances() {
       'weight' => -4,
     ),
   );
-  
+/*  
   // Exported field_instance: 'node-gallery-field_display_area'
   $field_instances['node-gallery-field_display_area'] = array(
     'bundle' => 'gallery',
@@ -149,13 +149,13 @@ function _gallery_content_type_field_default_field_instances() {
       'type' => 'options_select',
       'weight' => 3,
     ),
-  );
+  );*/
 
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Image');
-  t('Display Area');
+  //t('Display Area');
   
   return $field_instances;
 }
