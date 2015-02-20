@@ -2,4 +2,4 @@ name = Field Bases
 description = this is a helper module to keep all filed bases.
 core = 7.x
 package = Custom
-version = 7.0
+version = "7.x-1.0"

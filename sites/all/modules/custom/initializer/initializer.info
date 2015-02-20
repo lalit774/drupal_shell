@@ -5,12 +5,12 @@ core = 7.x
 version = "7.x-0.1"
 
 ;core
+dependencies[] = list
 dependencies[] = image
 dependencies[] = text
 dependencies[] = number
 dependencies[] = date
 dependencies[] = menu
-dependencies[] = list
 dependencies[] = field
 dependencies[] = field_ui
 
@@ -27,10 +27,9 @@ dependencies[] = views
 dependencies[] = views_ui
 
 ;custom
-dependencies[] = field_bases
+dependencies[] = flexslider_custom_presets
 dependencies[] = page
 dependencies[] = gallery
-dependencies[] = flexslider_custom_presets
 
 ;custom dummy data
 ;dependencies[] = gallery_demo_hack

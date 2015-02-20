@@ -13,6 +13,7 @@ function field_bases_install() {
   if(!empty($fields)) {
     foreach ($fields as $field){
       if (!field_info_field($field['field_name'])) {
+        field_info_cache_clear();
         field_create_field($field);
       }
     }
@@ -53,7 +54,7 @@ function _field_bases_get_default_field_bases() {
     'type' => 'image',
   );
 
- /*// Exported field_base: 'field_display_area'
+ // Exported field_base: 'field_display_area'
   $field_bases['field_display_area'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -81,7 +82,7 @@ function _field_bases_get_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
-  );*/
+  );
   
   return $field_bases;
 }

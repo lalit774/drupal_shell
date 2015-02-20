@@ -11,7 +11,7 @@ current_DIR=${current_DIR##*/}
 
 # Delete settings.php
 chmod 777 sites/default/settings.php
-rm -f sites/default/settings.php
+rm -rf sites/default/settings.php
 
 # Refresh git develop branch (or some other branch)
 if [ -z "$1" ]; then
@@ -31,6 +31,7 @@ echo Site name will be ${site_name}
 drush site-install minimal -y --account-name=${db_name} --account-pass=${db_name} --db-url=mysql://root:nothing@localhost/${db_name} --site-name=${site_name}
 
 # Install/Run initializer module
+drush en list -y
 drush en initializer -y
 
 # Rebuild Permissions
