@@ -58,7 +58,7 @@ function _create_photo_node($display_area, $node_type, $title, $image) {
   $node->revision = 0;
   $node->promote = 0;
   
-  $filepath = drupal_get_path('module', 'photo_demo_hack') . '/images/' . $image['file_name'];
+  $filepath = drupal_get_path('module', 'gallery_demo_hack') . '/images/' . $image['file_name'];
   $file = (object) array(
       'uid' => 1,
       'uri' => $filepath,

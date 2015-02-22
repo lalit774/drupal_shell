@@ -32,4 +32,4 @@ dependencies[] = page
 dependencies[] = gallery
 
 ;custom dummy data
-;dependencies[] = gallery_demo_hack
+dependencies[] = gallery_demo_hack
