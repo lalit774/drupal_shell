@@ -4,7 +4,12 @@
  *  Implementation of hook_install
 */
 function gallery_demo_hack_install() {
-
+    
+   $image_instance_info = field_info_instance('node', 'field_image', 'gallery');
+   if ($image_instance_info != NULL) {
+    $images_path = drupal_realpath('public://') . '/' . $image_instance_info['settings']['file_directory'];
+    file_prepare_directory($images_path, FILE_CREATE_DIRECTORY);
+   }
    _create_photo_node('gallery-display-main', 'photo', 'photo 1', array('file_name' => 'photo_1.jpg','alternate_text' =>'photo 1 Image Alternate text'));
   
    _create_photo_node('gallery-display-main', 'photo', 'photo 2', array('file_name' => 'photo_2.jpg','alternate_text' =>'photo 2 Image Alternate text'));
