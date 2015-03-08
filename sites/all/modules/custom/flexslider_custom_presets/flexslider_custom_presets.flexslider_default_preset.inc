@@ -12,7 +12,7 @@ function flexslider_custom_presets_flexslider_default_presets() {
     $gallery_preset->title = 'Gallery';
     $gallery_preset->theme = 'classic';
     $gallery_preset->imagestyle_normal = 'flexslider_full';
-    $gallery_preset->imagestyle_thumbnail = 'flexslider_thumbnail';
+    $gallery_preset->imagestyle_thumbnail = 'medium';
     $gallery_preset->options = array(
       'namespace' => 'flex-',
       'selector' => '.slides > li',
@@ -30,7 +30,7 @@ function flexslider_custom_presets_flexslider_default_presets() {
       'multipleKeyboard' => 0,
       'mousewheel' => 0,
       'controlsContainer' => '.flex-control-nav-container',
-      'sync' => '#flexslider-2',
+      'sync' => '',
       'asNavFor' => '',
       'itemWidth' => '0',
       'itemMargin' => '0',
@@ -41,7 +41,7 @@ function flexslider_custom_presets_flexslider_default_presets() {
       'slideshow' => 1,
       'slideshowSpeed' => '7000',
       'directionNav' => 1,
-      'controlNav' => '1',
+      'controlNav' => 'thumbnails',
       'prevText' => 'Previous',
       'nextText' => 'Next',
       'pausePlay' => 0,
