@@ -58,17 +58,20 @@ function _create_photo_node($display_area, $node_type, $title, $image) {
   $node->revision = 0;
   $node->promote = 0;
   
-  $filepath = drupal_get_path('module', 'gallery_demo_hack') . '/images/' . $image['file_name'];
-  $file = (object) array(
-      'uid' => 1,
-      'uri' => $filepath,
-      'filemime' => file_get_mimetype($filepath),
-      'status' => 1,
-  );
-  $file = file_copy($file, 'public://');    // We save the file to the root of the files directory.
-  $node->field_image[$node->language][0] = (array) $file;  //attach image to field!
+  $image_instance_info = field_info_instance('node', 'field_image', 'gallery');
+  if ($image_instance_info != NULL) {
+    $filepath = drupal_get_path('module', 'gallery_demo_hack') . '/images/' . $image['file_name'];
+    $file = (object) array(
+        'uid' => 1,
+        'uri' => $filepath,
+        'filemime' => file_get_mimetype($filepath),
+        'status' => 1,
+    );
+    $file = file_copy($file, 'public://'. $image_instance_info['settings']['file_directory']);    // We save the file to the root of the files directory.
+    $node->field_image[$node->language][0] = (array) $file;  //attach image to field!
+  }
   
-  $node->field_image[$node->language][0]['alt'] = $image['alternate_text'];
+ # $node->field_image[$node->language][0]['alt'] = $image['alternate_text'];
   $node->field_display_area[$node->language][0]['value'] = $display_area;    
   $node = node_submit($node);
   node_save($node);  
