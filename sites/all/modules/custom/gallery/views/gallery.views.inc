@@ -3,18 +3,18 @@
  * Implements hook_views_default_views().
  */
 function gallery_views_default_views() {
-    $view = new view();
-    $view->name = 'gallery';
-    $view->description = '';
-    $view->tag = 'default';
-    $view->base_table = 'node';
-    $view->human_name = 'Gallery';
-    $view->core = 7;
-    $view->api_version = '3.0';
-    $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+    $gallery_view = new view();
+    $gallery_view->name = 'gallery';
+    $gallery_view->description = '';
+    $gallery_view->tag = 'default';
+    $gallery_view->base_table = 'node';
+    $gallery_view->human_name = 'Gallery';
+    $gallery_view->core = 7;
+    $gallery_view->api_version = '3.0';
+    $gallery_view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
     /* Display: Master */
-    $handler = $view->new_display('default', 'Master', 'default');
+    $handler = $gallery_view->new_display('default', 'Master', 'default');
     $handler->display->display_options['title'] = 'Gallery';
     $handler->display->display_options['use_more_always'] = FALSE;
     $handler->display->display_options['access']['type'] = 'perm';
@@ -66,7 +66,7 @@ function gallery_views_default_views() {
     );
 
     /* Display: Gallery */
-    $handler = $view->new_display('block', 'Gallery', 'gallery');
+    $handler = $gallery_view->new_display('block', 'Gallery', 'gallery');
     $handler->display->display_options['defaults']['style_plugin'] = FALSE;
     $handler->display->display_options['style_plugin'] = 'flexslider';
     $handler->display->display_options['style_options']['optionset'] = 'gallery';
@@ -76,6 +76,6 @@ function gallery_views_default_views() {
     $handler->display->display_options['defaults']['row_options'] = FALSE;
     $handler->display->display_options['block_description'] = 'gallery';
 
-    $export[$view->name] = $view;
+    $export[$gallery_view->name] = $gallery_view;
     return $export;
 }
