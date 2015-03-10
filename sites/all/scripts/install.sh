@@ -41,3 +41,5 @@ drush eval 'node_access_rebuild();'
 chmod 755 sites/default
 chmod 755 sites/default/settings.php
 chmod -R 777 sites/default/files
+
+drush cc all
