@@ -21,6 +21,7 @@ dependencies[] = admin_menu
 dependencies[] = token
 dependencies[] = pathauto
 dependencies[] = flexslider
+dependencies[] = flexslider_views
 dependencies[] = features
 dependencies[] = jquery_update
 dependencies[] = views

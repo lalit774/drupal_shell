@@ -41,12 +41,12 @@ function gallery_views_api() {
  * Implements hook_block_info_alter().
  */
 function gallery_block_info_alter(&$blocks, $theme, $code_blocks) {
-   if (isset($blocks['views']['gallery'])) {
-      $blocks['views']['gallery']['status'] = 1;
-      $blocks['views']['gallery']['region'] = 'content';
-      $blocks['views']['gallery']['weight'] = 4;
-      $blocks['views']['gallery']['visibility'] = BLOCK_VISIBILITY_LISTED;
-      $blocks['views']['gallery']['pages'] = 'gallery';
+   if (isset($blocks['views']['gallery-gallery'])) {
+      $blocks['views']['gallery-gallery']['status'] = 1;
+      $blocks['views']['gallery-gallery']['region'] = 'content';
+      $blocks['views']['gallery-gallery']['weight'] = 4;
+      $blocks['views']['gallery-gallery']['visibility'] = BLOCK_VISIBILITY_LISTED;
+      $blocks['views']['gallery-gallery']['pages'] = 'gallery';
   }
 }
 
