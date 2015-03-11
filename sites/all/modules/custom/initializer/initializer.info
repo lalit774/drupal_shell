@@ -31,6 +31,9 @@ dependencies[] = views_ui
 dependencies[] = flexslider_custom_presets
 dependencies[] = page
 dependencies[] = gallery
+dependencies[] = about_us
+dependencies[] = about_us_data
+dependencies[] = text_format
 
 ;custom dummy data
 dependencies[] = gallery_demo_hack

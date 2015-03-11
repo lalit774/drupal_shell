@@ -1,0 +1,9 @@
+name = Text Format
+description = This module is for creating the text formats. 
+package = Custom
+core = 7.x
+version = "7.x-1.0"
+
+dependencies[] = ckeditor
+dependencies[] = htmlpurifier
+dependencies[] = filter

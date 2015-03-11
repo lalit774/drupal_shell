@@ -1,0 +1,5 @@
+name = About Us Data
+description = This is a helper module to contains about us data creation.
+package = Custom
+core = 7.x
+version = "7.x-1.0"

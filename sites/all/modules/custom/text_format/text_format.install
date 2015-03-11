@@ -1,0 +1,127 @@
+<?php
+
+/**
+ * Implements hook_install.
+ */
+function text_format_install() {
+  
+  // Set up new filter formats.
+  $editor_format_name = 'Editor HTML';
+  $editor_format_machine_name = 'editor_html';
+  
+  if (!in_array($editor_format_machine_name, array_keys(filter_formats()))) {
+    $new_format = array(
+      'format' => $editor_format_machine_name,
+      'name' => $editor_format_name,
+      'cache' => 1,
+      'status' => 1,
+      'weight' => 0,
+      'filters' => array(
+        'htmlpurifier_basic' => array(
+          'weight' => 0,
+          'status' => 1,
+          'settings' => array(
+            'htmlpurifier_help' => 1,
+            'htmlpurifier_basic_config' => array(
+              'Attr.EnableID' => 0,
+              'AutoFormat.AutoParagraph' => 1,
+              'AutoFormat.Linkify' => 1,
+              'AutoFormat.RemoveEmpty' => 0,
+              'HTML.Allowed' => 'a[href|title],em,strong,u,cite,blockquote,ul,ol,li,sup,sub,blockquote,p,h2[style]',
+              'HTML.ForbiddenAttributes' => '',
+              'HTML.ForbiddenElements' => 'div,script,iframe',
+              'HTML.SafeObject' => 0,
+              'Output.FlashCompat' => 0,
+              'URI.DisableExternalResources' => 0,
+              'URI.DisableResources' => 0,
+              'Null_URI.Munge' => 1,
+            ),
+          ),
+        ),
+        'filter_url' => array(
+          'weight' => 0,
+          'status' => 1,
+          'settings' => array(
+            'filter_url_length' => 72,
+          ),
+        ),
+        'filter_htmlcorrector' => array(
+          'weight' => 10,
+          'status' => 1,
+          'settings' => array(),
+        ),
+      ),
+    );
+
+    filter_format_save((object) $new_format);
+  }
+  
+  // Set up ckeditor profile.
+  $ckeditor_editor_profile_name = 'editor_html';
+  
+  if (ckeditor_profile_load($ckeditor_editor_profile_name) == FALSE) {
+    $ckeditor_profile = array(
+      'ss' => '2',
+      'toolbar' => "[ ['Bold','Italic','Underline'], ['Link','Unlink'], ['PasteFromWord'], ['NumberedList','BulletedList'], ['Blockquote', 'Superscript','Subscript','SpecialChar'], '/', ['Styles','Undo','Redo','Scayt'] ]",
+      'expand' => 't',
+      'default' => 't',
+      'show_toggle' => 't',
+      'uicolor' => 'default',
+      'uicolor_user' => '#9A0000',
+      'width' => '100%',
+      'lang' => 'en',
+      'auto_lang' => 't',
+      'language_direction' => 'default',
+      'allowed_content' => 't',
+      'extraAllowedContent' => '',
+      'enter_mode' => 'p',
+      'shift_enter_mode' => 'br',
+      'font_format' => 'p',
+      'custom_formatting' => 'f',
+      'formatting' => array(
+        'custom_formatting_options' => array(
+          'indent' => 'indent',
+          'breakBeforeOpen' => 'breakBeforeOpen',
+          'breakAfterOpen' => 'breakAfterOpen',
+          'BreakAfterClose' => 'BreakAfterClose',
+          'BreakBeforeClose' => 0,
+          'pre_indent' => 0,
+        ),
+      ),
+      'css_mode' => 'none',
+      'css_path' => '',
+      'css_style' => 'theme',
+      'styles_path' => '',
+      'filebrowser' => 'none',
+      'filebroswer_image' => '',
+      'filebrowser_flash' => '',
+      'UserFilesPath' => '%b%f/',
+      'UserFilesAbsolutePath' => '%d%b%f/',
+      'forcePasteAsPlainText' => 'f',
+      'html_entities' => 'f',
+      'scayt_autoStartup' => 't',
+      'theme_config_js' => 'f',
+      'js_conf' => '',
+      'loadPlugins' => array(),
+    );
+
+    // Save records that store ckeditor information.
+    db_insert('ckeditor_input_format')
+      ->fields(
+        array(
+          'name' => $ckeditor_editor_profile_name,
+          'format' => $editor_format_machine_name,
+        )
+      )
+      ->execute();
+
+    db_insert('ckeditor_settings')
+      ->fields(
+        array(
+          'name' => $ckeditor_editor_profile_name,
+          'settings' => serialize($ckeditor_profile),
+        )
+      )
+      ->execute();
+  }
+}

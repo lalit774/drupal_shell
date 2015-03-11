@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * Implements hook_ckeditor_settings_alter.
+ */
+function text_format_ckeditor_settings_alter() {
+  
+  drupal_add_js(drupal_get_path('module', 'text_format') . '/js/text_format.ckeditor_config.js', array('scope' => 'footer'));
+}
+
+/**
+ * Implements hook_enable.
+ */
+function text_format_enable() {
+ 
+  $admin_role = user_role_load_by_name(ROLE_ADMINISTRATOR);
+    
+  $format = new stdClass;
+  $format->format = 'full_html';
+  $format->name = 'Full HTML';
+  $format->roles[$admin_role->rid] = 1;
+  $format->filters['filter_url']['status'] = 1;
+  $format->filters['filter_url']['settings']['filter_url_length'] = 72;
+  $format->filters['filter_autop']['status'] = 1;
+  $format->filters['filter_htmlcorrector']['status'] = 1;
+  $format->filters['filter_html_escape']['status'] = 0;
+  $format->filters['filter_html']['status'] = 0;
+  
+  $status = filter_format_save($format);
+  
+  switch ($status) {
+  	case SAVED_NEW:
+  	  watchdog("Text Format", t('Added text format %format.', array('%format' => $format->name))); 
+  	  break;
+  }
+}

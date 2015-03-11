@@ -1,0 +1,41 @@
+<?php
+/**
+ * Impelement hook_menu
+ * Create certain custom menus
+ * 
+ */
+
+function about_us_menu(){
+  $items = array();
+  $items['about'] = array(
+    'title' => 'About Us',
+    'page callback' => 'about_us',
+    'access arguments' =>  array('access content'),
+    'menu_name' => 'main-menu',
+    'type' => MENU_NORMAL_ITEM,
+    'weight' => -10,
+  );
+  return $items;
+}
+
+/**
+ * about us page logic
+ */
+
+function about_us(){
+  $page = '';
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'page')
+    ->propertyCondition('title', 'About Us')
+    ->propertyCondition('status', 1)
+    ->range(0,1)
+    ->execute();
+ if(isset($entities['node']) && !empty($entities)) {
+   $data = array_keys($entities['node']);
+   $nid = array_shift($data);
+   $node = node_load($nid);
+   $page = node_page_view($node);
+  }
+  return $page;
+}

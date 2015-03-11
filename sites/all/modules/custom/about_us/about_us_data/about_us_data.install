@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * Implements hook_install().
+ *
+ */
+function about_us_data_install() {
+  $node = new stdClass();
+  $node->type = 'page';
+  node_object_prepare($node);
+  $body_text = '';
+  $body_text .= '<p><b>Atcost Drilling Inc.</b> is a family-owned geotechnical and environmental drilling firm. The company was founded in 1973 and has earned an industry-wide reputation as a leading provider of drilling services to the environmental, landfill, well decommissioning and geotechnical drilling sectors. We employ up to fifteen employees, including the manager and office staff and administrator.</p>';
+  $body_text .= '<p><b>Atcost Drilling Inc.</b> has established a tradition of innovation and service excellence and has earned a solid reputation for excellent customer service on routine and out-of-the-ordinary jobs.</p>';
+  $body_text .= '<p>Our extensive experience and technical abilities have made us a leading choice to engineering and environmental consultant firms, mining companies, petroleum companies, exploration groups, public and private sectors and government agencies. We employ both multi-purpose and diamond core drill rigs, in a number of configurations, to construct boreholes and to extract water, ground and rock samples under the direction and supervision of our clients.</p>';
+  $body_text .= '<p>TBD</p>';
+  $body_text .= '<p>Our success in the industry stems not only from the experience and tools we bring to each earth and rock boring project, but also from our drive to deliver superior customer service, consistent quality, employee expertise - personnel that are unionized, experienced, trained, knowledgeable and excellent communicators; equipment quality and safe and efficient drilling performance. Our customers recognize that we bring more than machinery to their job sites; we bring leadership and commitment to every project.</p>';
+  $body_text .= '<p>We invest heavily in state-of-the-art equipment that outperforms the competition through superior technology and reliability. That translates into faster hole completion times, less downtime due to drill failure, most cost-efficient drilling services and the best value for money for the client.</p>';
+  $body_text .= '<p><b>Atcost Drilling Inc.</b>\'s ongoing commitment to your success, combined with our superior service, sets us apart from our competitors. We strive to master leading edge technology and pride ourselves on the quality of service we commit to our clients. As a result, we have built our client base and reputation one project at a time.</p>';
+  $body_text .= '<p>While always striving for operational excellence and continuous improvement, the family values of integrity, honesty and ethical business practices run through the core of everything we do. We are proud of our history, and are excited to continually build on the foundation started in 1973.</p>';
+  $body_text .= '<p><b>Our reputation was built by consistently doing it right the first time and standing behind our work!</b></p>';
+  $node->sticky = 0;
+  $node->title = t('About Us');
+  $node->language = LANGUAGE_NONE;
+  $node->body[$node->language][0]['value'] = $body_text;
+  //$node->body[$node->language][0]['summary'] = text_summary($body_text);
+  //$node->body[$node->language][0]['format']  = 'plain_text';
+  //$node->path['alias'] = '';  
+  //$node->path['pathauto'] = 0;
+  $node->status = 1;
+  $node->revision = 0;
+  $node->promote = 0;
+  $node = node_submit($node);
+  node_save($node);
+}
