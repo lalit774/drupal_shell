@@ -10,49 +10,15 @@ function rig_demo_hack_install() {
     $images_path = drupal_realpath('public://') . '/' . $image_instance_info['settings']['file_directory'];
     file_prepare_directory($images_path, FILE_CREATE_DIRECTORY);
    }
-   _create_photo_node('rig-display-main', 'rig', 'photo 1', array('file_name' => 'photo_1.jpg','alternate_text' =>'photo 1 Image Alternate text'));
+   $rig_desc_1 = 'These late model rigs are truck mounted and equipped for hollow-stem auger, mud rotary drilling, air and rock coring. All rigs have been converted to high torque configuration for difficult drilling conditions; most have 140 lb. and 300 lb. auto-hammers. Auger sizes range from 4" to 24"  O.D.';
+   _create_rig_node('Truckmount', 'rig', '95 High Torque', '1', '350\' + with 8" diameter hole', $rig_desc_1, array('file_name' => '95HighTorque_Truckmount.jpg','alternate_text' =>'95 High Torque'));
   
-   _create_photo_node('rig-display-main', 'rig', 'photo 2', array('file_name' => 'photo_2.jpg','alternate_text' =>'photo 2 Image Alternate text'));
+   _create_rig_node('Truckmount', 'rig', 'Failing F-10 High Torque', '1', '350\' + with 8" diameter hole', '', array('file_name' => 'FailingF10_Truckmount.jpg','alternate_text' =>'Failing F-10 High Torque'));
   
-   _create_photo_node('rig-display-main', 'rig', 'photo 3', array('file_name' => 'photo_3.jpg','alternate_text' =>'photo 3 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 4', array('file_name' => 'photo_4.jpg','alternate_text' =>'photo 4 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 5', array('file_name' => 'photo_5.jpg','alternate_text' =>'photo 5 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 6', array('file_name' => 'photo_6.jpg','alternate_text' =>'photo 6 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 7', array('file_name' => 'photo_7.jpg','alternate_text' =>'photo 7 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 8', array('file_name' => 'photo_8.jpg','alternate_text' =>'photo 8 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 9', array('file_name' => 'photo_9.jpg','alternate_text' =>'photo 9 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 10', array('file_name' => 'photo_10.jpg','alternate_text' =>'photo 10 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 11', array('file_name' => 'photo_11.jpg','alternate_text' =>'photo 11 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 12', array('file_name' => 'photo_12.jpg','alternate_text' =>'photo 12 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 13', array('file_name' => 'photo_13.jpg','alternate_text' =>'photo 13 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 14', array('file_name' => 'photo_14.jpg','alternate_text' =>'photo 14 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 15', array('file_name' => 'photo_15.jpg','alternate_text' =>'photo 15 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 16', array('file_name' => 'photo_16.jpg','alternate_text' =>'photo 16 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 17', array('file_name' => 'photo_17.jpg','alternate_text' =>'photo 17 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 18', array('file_name' => 'photo_18.jpg','alternate_text' =>'photo 18 Image Alternate text'));
-   
-   _create_photo_node('rig-display-main', 'rig', 'photo 19', array('file_name' => 'photo_19.jpg','alternate_text' =>'photo 19 Image Alternate text'));
-  
-   _create_photo_node('rig-display-main', 'rig', 'photo 20', array('file_name' => 'photo_20.jpg','alternate_text' =>'photo 20 Image Alternate text'));
 }
 
 
-function _create_photo_node($display_area, $node_type, $title, $image) {
+function _create_rig_node($rig_category, $node_type, $title, $quantity, $depths_diameters_drilled, rig_desc, $image) {
   $node = new stdClass();
   $node->type = $node_type;
   $node->language = LANGUAGE_NONE;
@@ -63,7 +29,7 @@ function _create_photo_node($display_area, $node_type, $title, $image) {
   $node->revision = 0;
   $node->promote = 0;
   
-  $image_instance_info = field_info_instance('node', 'field_image', 'rig');
+  $image_instance_info = field_info_instance('node', 'field_feature_image', 'rig');
   if ($image_instance_info != NULL) {
     $filepath = drupal_get_path('module', 'rig_demo_hack') . '/images/' . $image['file_name'];
     $file = (object) array(
@@ -73,11 +39,15 @@ function _create_photo_node($display_area, $node_type, $title, $image) {
         'status' => 1,
     );
     $file = file_copy($file, 'public://'. $image_instance_info['settings']['file_directory']);    // We save the file to the root of the files directory.
-    $node->field_image[$node->language][0] = (array) $file;  //attach image to field!
+    $node->field_feature_image[$node->language][0] = (array) $file;  //attach image to field!
   }
   
- # $node->field_image[$node->language][0]['alt'] = $image['alternate_text'];
-  $node->field_display_area[$node->language][0]['value'] = $display_area;    
+  $node->field_feature_image[$node->language][0]['alt'] = $image['alternate_text'];
+  $node->field_rig_category[$node->language][0]['value'] = $rig_category;
+  $node->field_quantity[$node->language][0]['value'] = $quantity;
+  $node->field_depths_diameters_drilled[$node->language][0]['value'] = $depths_diameters_drilled;
+  $node->body[$node->language][0]['value'] = $rig_desc;
+  
   $node = node_submit($node);
   node_save($node);  
 }
