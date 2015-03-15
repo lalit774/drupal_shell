@@ -3,14 +3,14 @@
 /**
  *  Implementation of hook_install
 */
-function user_install() {
+function custom_user_install() {
   _users_create_test_users();
 }
 
 /**
  *  Implementation of hook_uninstall
 */
-function user_uninstall() {
+function custom_user_uninstall() {
   $uids = ''; 
   $user1 = user_load_by_name('administrator');
   $uids .= ', '. $user1->uid;

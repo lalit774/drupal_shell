@@ -1,4 +1,4 @@
-name = User
+name = Custom User
 description = A helper module for customization user management.
 package = Custom
 core = 7.x

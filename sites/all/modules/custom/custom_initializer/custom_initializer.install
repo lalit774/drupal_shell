@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function initializer_install() {
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function initializer_uninstall() {
+ 
+}

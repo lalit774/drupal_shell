@@ -31,8 +31,10 @@ echo Site name will be ${site_name}
 drush site-install minimal -y --account-name=${db_name} --account-pass=${db_name} --db-url=mysql://root:nothing@localhost/${db_name} --site-name=${site_name}
 
 # Install/Run initializer module
-drush en list -y
-drush en initializer -y
+;drush en list -y
+drush en core_initializer -y
+drush en custom_initializer -y
+
 
 # Rebuild Permissions
 drush eval 'node_access_rebuild();' 
