@@ -24,8 +24,8 @@ dependencies[] = page
 dependencies[] = gallery
 dependencies[] = about_us
 dependencies[] = about_us_data
-dependencies[] = roles
-;dependencies[] = user
+dependencies[] = custom_roles
+dependencies[] = custom_user
 dependencies[] = text_format
 
 ;custom dummy data
