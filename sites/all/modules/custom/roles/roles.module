@@ -1,0 +1,21 @@
+<?php
+
+define('ROLE_ADMINISTRATOR', 'administrator');
+define('ROLE_CONTENT_EDITOR', 'content editor');
+
+function roles_enable() {
+  foreach (_get_roles() as $role_name){
+    if(!user_role_load_by_name($role_name)){
+      $role = new stdClass();
+      $role->name = $role_name;
+      user_role_save($role);
+    }
+  }
+}
+
+function _get_roles() {
+  return array(
+    ROLE_ADMINISTRATOR,
+    ROLE_CONTENT_EDITOR, 
+  );
+}

@@ -1,0 +1,6 @@
+name = Roles
+description = A helper module to create user roles in code.
+package = Custom
+core = 7.x
+version = "7.x-1.0"
+dependencies[] = user

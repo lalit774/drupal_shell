@@ -4,6 +4,7 @@ package = Custom
 core = 7.x
 version = "7.x-1.0"
 
+dependencies[] = roles
 dependencies[] = ckeditor
 dependencies[] = htmlpurifier
 dependencies[] = filter

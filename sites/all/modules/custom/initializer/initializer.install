@@ -15,6 +15,7 @@ function initializer_install() {
     ->condition('name', 'bootstrap')
     ->execute();
   variable_set('theme_default', 'bootstrap');
+  variable_set('admin_theme', 'seven');
 }
 
 /**
