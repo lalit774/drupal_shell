@@ -3,12 +3,12 @@
 /**
  * Implements hook_install().
  */
-function initializer_install() {
+function custom_initializer_install() {
 }
 
 /**
  * Implements hook_uninstall().
  */
-function initializer_uninstall() {
+function custom_initializer_uninstall() {
  
 }

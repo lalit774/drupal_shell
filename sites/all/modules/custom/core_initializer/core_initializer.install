@@ -3,7 +3,7 @@
 /**
  * Implements hook_install().
  */
-function initializer_install() {
+function core_initializer_install() {
   db_update('system')
     ->fields(array('status' => 1))
     ->condition('type', 'theme')
@@ -16,6 +16,6 @@ function initializer_install() {
 /**
  * Implements hook_uninstall().
  */
-function initializer_uninstall() {
+function core_initializer_uninstall() {
  
 }
