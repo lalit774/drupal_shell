@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * Impelement hook_menu
+ * 
+ */
+
+function rig_menu(){
+  $items = array();
+  $items['rig'] = array(
+   'title' => 'Rigs',
+   'page callback' => 'rig',
+   'access arguments' => array('access content'),
+   'menu_name' => 'main-menu',
+   'type' => MENU_NORMAL_ITEM,
+   'weight' => -45,
+  );
+  return $items;
+}
+
+
+/**
+ * current affairs page logic
+ */
+
+function rig(){
+  return '';
+}
+
+/**
+ * Implements hook_views_api.
+ */
+function rig_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'rig') ,
+  );
+}
+
+/**
+ * Implements hook_block_info_alter().
+ */
+function rig_block_info_alter(&$blocks, $theme, $code_blocks) {
+   if (isset($blocks['views']['gallery-gallery'])) {
+      $blocks['views']['gallery-gallery']['status'] = 1;
+      $blocks['views']['gallery-gallery']['region'] = 'content';
+      $blocks['views']['gallery-gallery']['weight'] = 4;
+      $blocks['views']['gallery-gallery']['visibility'] = BLOCK_VISIBILITY_LISTED;
+      $blocks['views']['gallery-gallery']['pages'] = 'gallery';
+  }
+}
+

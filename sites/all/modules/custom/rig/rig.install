@@ -1,0 +1,21 @@
+<?php
+
+ // Load rig
+ // .content_type.inc .
+  module_load_include('inc', 'rig', 'rig.content_type');
+  
+  
+/**
+ *  Implementation of hook_install
+*/
+function rig_install() {
+  _install_rig_content_type();
+}
+
+/**
+ *  Implementation of hook_uninstall
+*/
+function rig_uninstall() {
+  _delete_rig_content_type('rig');
+   cache_clear_all('variables', 'cache');
+}
