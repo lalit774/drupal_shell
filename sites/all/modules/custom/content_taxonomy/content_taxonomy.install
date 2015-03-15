@@ -5,18 +5,26 @@
 */
 function content_taxonomy_install() {
   _content_types_create_taxonomy_fields();
-  _content_taxonomy_set_hs_settings();
 }
 
 function _content_types_create_taxonomy_fields(){
-  $vocabulary_content_taxonomy = array(
-    'name' => t('Content Category'),
-    'machine_name' => 'content_category',
-    'description' => t('Content Category'),
+  $vocabulary_gallery_taxonomy = array(
+    'name' => t('Gallery'),
+    'machine_name' => 'gallery',
+    'description' => t('Gallery'),
   );
-  $vocabulary_content_taxonomy_obj = (object) $vocabulary_content_taxonomy;
-  taxonomy_vocabulary_save($vocabulary_content_taxonomy_obj);
-  custom_create_taxonomy_term('content_category');
+  $vocabulary_gallery_taxonomy_obj = (object) $vocabulary_gallery_taxonomy;
+  taxonomy_vocabulary_save($vocabulary_gallery_taxonomy_obj);
+  custom_create_taxonomy_term('gallery');
+  
+  $vocabulary_rig_taxonomy = array(
+    'name' => t('Rig'),
+    'machine_name' => 'rig',
+    'description' => t('Rig'),
+  );
+  $vocabulary_rig_taxonomy_obj = (object) $vocabulary_rig_taxonomy;
+  taxonomy_vocabulary_save($vocabulary_rig_taxonomy_obj);
+  custom_create_taxonomy_term('rig');
 }
 
 /**
@@ -56,11 +64,21 @@ function custom_create_taxonomy_term($vocabulary) {
   }
 }
 
-function content_category_terms() {
+function gallery_terms() {
   return array(
-  'Gallery' => array(
-      'Gallery Page',
-      'Spoon samples',
-    ),    
+      'Gallery Page' => 'Gallery Page',
+      'Spoon samples' => 'Spoon samples',
+  );
+}
+
+function rig_terms() {
+  return array(
+      'Truckmount' => 'Truckmount',
+      'Trackmount' => 'Trackmount',
+      'Limited Access Track Rigs' => 'Limited Access Track Rigs',
+      'Skid-Mounted' => 'Skid-Mounted',
+      'Other' => 'Other',
+      'Support Equipment' => 'Support Equipment',
+      'Service Vehicles' => 'Service Vehicles',
   );
 }

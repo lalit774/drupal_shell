@@ -22,11 +22,14 @@ dependencies[] = ckeditor
 dependencies[] = flexslider_custom_presets
 dependencies[] = page
 dependencies[] = gallery
+dependencies[] = rig
 dependencies[] = about_us
 dependencies[] = about_us_data
 dependencies[] = custom_roles
 dependencies[] = custom_user
 dependencies[] = text_format
+dependencies[] = content_taxonomy
+
 
 ;custom dummy data
 dependencies[] = gallery_demo_hack

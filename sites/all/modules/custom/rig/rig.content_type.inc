@@ -199,11 +199,50 @@ function _rig_content_type_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-rig-field_rig_category'
+  $field_instances['node-rig-field_rig_category'] = array(
+    'bundle' => 'rig',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_rig_category',
+    'label' => 'Rig Category',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 31,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Depths & Diameters Drilled');
   t('Description');
   t('Quantity');
+  t('Rig Category');
+
   
   return $field_instances;
 }
